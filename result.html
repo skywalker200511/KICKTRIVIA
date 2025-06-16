@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: black; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+           
+        }
+        .result_txt {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .result{
+            border-radius: 20px;
+            width: 1450px;
+            height: 650px;
+            background-color: beige;
+            margin-top: 40px;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(270deg, beige, #efbf38);
+            background-size: 400% 400%;
+            animation: gradientShift 7s ease infinite;
+        }
+        .try_again{
+            margin-top: 100px;
+            left: 44.5%;
+            top: 55%;
+            position: absolute;
+            border-radius: 5px;
+            padding: 20px 30px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(255, 118, 118);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transition:transform 0.3s ease;
+            }
+            .try_again:hover {
+                background-color: rgb(255, 90, 90);
+                transform: scale(1.1);
+            }
+
+
+
+            .footballs {
+                position: absolute;
+                inset: 0;
+                overflow: hidden;
+                z-index: 0;
+                pointer-events: none;
+            }
+
+            .footballs span {
+                position: absolute;
+                font-size: 24px;
+                opacity: 0.7;
+                top: 100%;
+                animation: floatBall 8s linear infinite;
+            }
+
+            .footballs span:nth-child(1) { left: 20%; animation-delay: 0s; }
+            .footballs span:nth-child(2) { left: 60%; animation-delay: 2s; }
+            .footballs span:nth-child(3) { left: 80%; animation-delay: 4s; }
+
+            @keyframes floatBall {
+            0%   { transform: translateY(0);     opacity: 0.7; }
+            50%  { transform: translateY(-50vh); opacity: 1;   }
+            100% { transform: translateY(-100vh); opacity: 0; }
+            }
+
+            .logo{
+                position: absolute;
+                width: 80px;
+                background-color: aliceblue;
+                border-radius: 100px;
+                padding: 10px;
+                border-width: 2px;
+                border-style: solid;
+                top: 60px;
+                left: 35%;
+                
+            }
+            .KICKTRIVIA{
+                top: 70px;
+                font-size: 30px;
+                position: absolute;
+            }
+
+    </style>
+    
+    <title>RESULT PAGE</title>
+</head>
+<body>
+    <h1 class="KICKTRIVIA">KICKTRIVIA</h1>
+        <img class="logo" src="images/foot_bg-removebg-preview.png" alt="">
+    <div class="footballs">
+  <span>⚽</span>
+  <span>⚽</span>
+  <span>⚽</span>
+</div>
+    <div class="result">
+        <h1 class="result_txt"> GOOD JOB!</h1>
+        <h1 class="score" id="scoreDisplay">SCORE-</h1>
+    </div>
+    <button class="try_again" onclick="location.href='index.html'">TRY AGAIN</button>
+</body>
+<script>
+  window.onload = function () {
+    const score = localStorage.getItem("score");
+    const total = localStorage.getItem("totalQuestions");
+    document.getElementById("scoreDisplay").innerText = `Your score is: ${score}`;
+  };
+</script>
+</html>
